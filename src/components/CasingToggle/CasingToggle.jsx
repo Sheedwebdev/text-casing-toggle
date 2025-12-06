@@ -2,16 +2,12 @@ import React  from 'react';
 import styled from 'styled-components';
 
   function CasingToggle() {
-      const [upperCase, setUpperCase] = React.useState(false);
-
-      const handleToggle = () => {
-      setUpperCase(!upperCase);
-      }
-
-      const resetCasing = () => {
-        setUpperCase(false);
-      }
-
+    const {
+      upperCase,
+      handleToggle,
+      resetCasing
+    } = useCaseChange();
+    
     return (
       <>
         <Wrapper>
@@ -25,6 +21,24 @@ import styled from 'styled-components';
         </Wrapper>
       </>
     )
+  }
+
+  function useCaseChange() {
+    const [upperCase, setUpperCase] = React.useState(false);
+
+    const handleToggle = () => {
+    setUpperCase(!upperCase);
+    }
+
+    const resetCasing = () => {
+      setUpperCase(false);
+    }
+
+    return {
+      upperCase,
+      handleToggle,
+      resetCasing
+    }
   }
 
   const ButtonsContainer = styled.div`
